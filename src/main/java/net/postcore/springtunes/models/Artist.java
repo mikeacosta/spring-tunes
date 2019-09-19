@@ -14,7 +14,9 @@ public class Artist {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "artist_id")
     private Long artistId;
+
     private String name;
+
     @JsonIgnore
     @OneToMany(mappedBy = "artist")
     private Set<Single> singles = new HashSet<>();
