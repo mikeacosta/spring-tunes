@@ -4,7 +4,7 @@
 
 (In-progress) Full stack web application built with:
 - Spring Web MVC
-- Java Persistence API (JPA)
+- Spring Data JPA
 - Hibernate
 - MySQL
 - IntelliJ IDEA

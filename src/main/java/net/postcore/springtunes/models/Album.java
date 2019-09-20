@@ -1,9 +1,13 @@
 package net.postcore.springtunes.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@JsonIdentityInfo(generator= ObjectIdGenerators.IntSequenceGenerator.class)
 @Entity(name = "Album")
 @Table(name = "album")
 public class Album {
@@ -12,7 +16,9 @@ public class Album {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "album_id")
     private Long albumId;
+
     private String title;
+
     @OneToMany(mappedBy = "album")
     private Set<Track> tracks = new HashSet<>();
 

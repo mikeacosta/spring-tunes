@@ -2,6 +2,7 @@ package net.postcore.springtunes.services;
 
 import net.postcore.springtunes.models.Artist;
 import net.postcore.springtunes.repositories.ArtistRepository;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +28,11 @@ public class ArtistServiceImpl implements ArtistService {
     @Override
     @Transactional
     public List<Artist> list() {
-        return repository.findAll();
+        List<Artist> artists = repository.findAll();
+        for (Artist artist : artists) {
+            Hibernate.initialize(artist.getSingles());
+        }
+        return artists;
     }
 
     @Override

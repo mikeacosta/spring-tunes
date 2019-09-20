@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ArtistService {
 
-    long save(Artist artists);
+    long save(Artist artist);
 
     Artist get(long id);
 

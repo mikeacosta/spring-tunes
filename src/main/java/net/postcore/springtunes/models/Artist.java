@@ -1,11 +1,13 @@
 package net.postcore.springtunes.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@JsonIdentityInfo(generator= ObjectIdGenerators.IntSequenceGenerator.class)
 @Entity(name = "Artist")
 @Table(name = "artist")
 public class Artist {
@@ -17,7 +19,6 @@ public class Artist {
 
     private String name;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "artist")
     private Set<Single> singles = new HashSet<>();
 
