@@ -22,6 +22,10 @@ public class Artist {
     @OneToMany(mappedBy = "artist")
     private Set<Single> singles = new HashSet<>();
 
+    public Artist(String name) {
+        this.name = name;
+    }
+
     public Long getArtistId() {
         return artistId;
     }

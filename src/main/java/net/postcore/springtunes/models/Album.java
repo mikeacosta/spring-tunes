@@ -51,7 +51,6 @@ public class Album {
         return "Album{" +
                 "albumId=" + albumId +
                 ", title='" + title + '\'' +
-                ", tracks=" + tracks +
                 '}';
     }
 }

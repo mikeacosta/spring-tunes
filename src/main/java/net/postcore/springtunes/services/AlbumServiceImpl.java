@@ -6,6 +6,7 @@ import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -25,8 +26,12 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
+    @Transactional
     public List<Album> list() {
         List<Album> albums = repository.findAll();
+        for (Album album : albums) {
+            Hibernate.initialize(album.getTracks());
+        }
         return albums;
     }
 

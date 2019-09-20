@@ -21,8 +21,11 @@ public class ArtistServiceImpl implements ArtistService {
     }
 
     @Override
+    @Transactional
     public Artist get(long id) {
-        return null;
+        Artist artist = repository.getOne(id);
+        Hibernate.initialize(artist.getSingles());
+        return artist;
     }
 
     @Override
